@@ -1,57 +1,46 @@
 package org.example;
-
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
 
-        System.out.println("--- BIENVENIDO ---");
-        System.out.print("Para abrir su cuenta, ingrese su saldo inicial: $");
-        double saldoInicial = scanner.nextDouble();
+        Scanner teclado = new Scanner(System.in);
 
-        // Se crea el objeto cuenta
-        Cuenta miCuenta = new Cuenta(saldoInicial);
+        System.out.println("--- BANCO ---");
+        System.out.print("Plata inicial: $");
+        double plataInicial = teclado.nextDouble();
 
-        // Se crean los objetos para cada operación (Bajo acoplamiento)
+        Cuenta miCuenta = new Cuenta(plataInicial);
         Deposito deposito = new Deposito();
         Retiro retiro = new Retiro();
         Consulta consulta = new Consulta();
 
         int opcion = 0;
 
-        // Bucle para el menú interactivo
         while (opcion != 4) {
-            System.out.println("\n--- MENÚ PRINCIPAL ---");
-            System.out.println("1. Depositar dinero");
-            System.out.println("2. Retirar dinero");
-            System.out.println("3. Consultar saldo");
-            System.out.println("4. Salir");
-            System.out.print("Elija una opción: ");
-            opcion = scanner.nextInt();
+            System.out.println("\n1. Depositar | 2. Retirar | 3. Ver plata | 4. Salir");
+            System.out.print("Elige: ");
+            opcion = teclado.nextInt();
 
-            switch (opcion) {
-                case 1:
-                    System.out.print("Ingrese la cantidad a depositar: $");
-                    double cantidadDeposito = scanner.nextDouble();
-                    deposito.ejecutar(miCuenta, cantidadDeposito);
-                    break;
-                case 2:
-                    System.out.print("Ingrese la cantidad a retirar: $");
-                    double cantidadRetiro = scanner.nextDouble();
-                    retiro.ejecutar(miCuenta, cantidadRetiro);
-                    break;
-                case 3:
-                    consulta.ejecutar(miCuenta);
-                    break;
-                case 4:
-                    System.out.println("Hasta luego.");
-                    break;
-                default:
-                    System.out.println("Opción no válida.Intente de nuevo.");
+            if (opcion == 1) {
+                System.out.print("¿Cuánta plata depositas?: $");
+                double plata = teclado.nextDouble();
+                deposito.ejecutar(miCuenta, plata);
+            }
+            else if (opcion == 2) {
+                System.out.print("¿Cuánta plata retiras?: $");
+                double plata = teclado.nextDouble();
+                retiro.ejecutar(miCuenta, plata);
+            }
+            else if (opcion == 3) {
+                consulta.ejecutar(miCuenta);
+            }
+            else if (opcion == 4) {
+                System.out.println("adios");
             }
         }
 
-        scanner.close();
+        teclado.close();
     }
 }
