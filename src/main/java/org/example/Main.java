@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("🏦 --- BIENVENIDO AL BANCO EL AHORRADOR ---");
+        System.out.println("--- BIENVENIDO AL BANCO EL AHORRADOR ---");
         System.out.print("Para abrir su cuenta, ingrese su saldo inicial (o 0 si está vacía): $");
         double saldoInicial = scanner.nextDouble();
 
@@ -45,10 +45,10 @@ public class Main {
                     consulta.ejecutar(miCuenta);
                     break;
                 case 4:
-                    System.out.println("👋 ¡Gracias por usar el Banco El Ahorrador! Hasta luego.");
+                    System.out.println("¡Gracias por usar el Banco! Hasta luego.");
                     break;
                 default:
-                    System.out.println("⚠️ Opción no válida. Intente de nuevo.");
+                    System.out.println("Opción no válida. Intente de nuevo.");
             }
         }
 
