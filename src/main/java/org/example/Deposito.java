@@ -1,14 +1,14 @@
 package org.example;
 
 public class Deposito {
-    public void ejecutar(Cuenta cuenta, double cantidad) {
-        if (cantidad > 0) {
-            // Obtiene el saldo actual, le suma la cantidad y actualiza la cuenta
-            cuenta.setSaldo(cuenta.getSaldo() + cantidad);
-            System.out.println("Depósito exitoso. Se agregaron $" + cantidad);
+
+    public void ejecutar(Cuenta cuenta, double plata) {
+        if (plata > 0) {
+            double total = cuenta.getSaldo() + plata;
+            cuenta.setSaldo(total);
+            System.out.println("Depósito listo.");
         } else {
-            System.out.println("La cantidad a depositar debe ser mayor a $0.");
+            System.out.println("No puedes depositar cero o negativo.");
         }
     }
-
 }
